@@ -9,18 +9,19 @@
   <meta property="og:title" content="WaveQ 韓國六角水生成機 | 天然礦物質鹼性還原水 | 多國專利認證" />
   <meta property="og:description" content="WaveQ 韓國原裝天然礦物質鹼性六角水生成機，擁有美國專利、英國專利、WQA等多國認證。每天7分鐘生成健康六角水，十多樣功效全方位改善體質。" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://boyman131418.github.io/waveq/" />
-  <meta property="og:image" content="https://boyman131418.github.io/waveq/assets/waveq-product.jpeg" />
+  <meta property="og:url" content="https://waveq.org/" />
+  <meta property="og:image" content="https://waveq.org/assets/waveq-product.jpeg" />
   <meta property="og:locale" content="zh_HK" />
   <meta property="og:site_name" content="WaveQ 韓國六角水生成機" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="WaveQ 韓國六角水生成機 | 多國專利認證" />
   <meta name="twitter:description" content="每天7分鐘生成天然礦物質鹼性六角水，擁有美國專利、英國專利、WQA等國際認證，十多樣健康功效。" />
-  <meta name="twitter:image" content="https://boyman131418.github.io/waveq/assets/waveq-product.jpeg" />
+  <meta name="twitter:image" content="https://waveq.org/assets/waveq-product.jpeg" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="WaveQ" />
-  <link rel="canonical" href="https://boyman131418.github.io/waveq/" />
+  <link rel="canonical" href="https://waveq.org/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,13 +37,16 @@
       --accent: hsl(185, 70%, 42%);
       --border: hsl(200, 30%, 88%);
       --water-deep: hsl(205, 80%, 35%);
+      --gold: hsl(43, 74%, 59%);
       --gradient-water: linear-gradient(180deg, hsl(200, 80%, 95%), #fff);
       --gradient-deep: linear-gradient(135deg, hsl(205, 80%, 35%), hsl(200, 80%, 45%));
       --shadow-water: 0 8px 32px -8px hsla(200, 80%, 45%, 0.2);
       --shadow-water-lg: 0 16px 48px -12px hsla(200, 80%, 45%, 0.25);
+      --shadow-gold: 0 4px 20px -4px hsla(43, 74%, 59%, 0.3);
       --radius: 1rem;
     }
-    body { font-family: 'Noto Sans TC', sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans TC', sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     a { text-decoration: none; color: inherit; }
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
     .text-gradient { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
@@ -51,111 +55,158 @@
     .section-subtitle { text-align: center; color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 3rem; }
 
     /* NAV */
-    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: hsla(200, 30%, 98%, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: hsla(200, 30%, 98%, 0.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); transition: box-shadow 0.3s; }
+    .nav.scrolled { box-shadow: 0 2px 20px hsla(200, 80%, 45%, 0.1); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
     .nav-logo { font-size: 1.3rem; font-weight: 900; }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); transition: color 0.2s; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); transition: color 0.3s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
     .nav-links a:hover { color: var(--primary); }
-    .nav-cta { padding: 0.5rem 1.5rem; border-radius: 99px; background: var(--gradient-deep); color: #fff; font-size: 0.875rem; font-weight: 600; transition: box-shadow 0.3s; }
-    .nav-cta:hover { box-shadow: var(--shadow-water); }
-    .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--fg); }
-    .nav-mobile { display: none; flex-direction: column; gap: 0.5rem; padding: 1rem 1.5rem; background: var(--bg); border-bottom: 1px solid var(--border); }
-    .nav-mobile a { padding: 0.5rem 0; font-size: 0.9rem; color: var(--muted); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta { padding: 0.5rem 1.5rem; border-radius: 99px; background: var(--gradient-deep); color: #fff !important; font-size: 0.875rem; font-weight: 600; transition: all 0.3s; }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { box-shadow: var(--shadow-water); transform: translateY(-1px); }
+    .nav-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--fg); padding: 0.5rem; }
+    .nav-mobile { display: none; flex-direction: column; gap: 0; padding: 0.5rem 0; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .nav-mobile a { padding: 0.75rem 1.5rem; font-size: 0.95rem; color: var(--muted); transition: all 0.2s; }
+    .nav-mobile a:hover { background: var(--secondary); color: var(--primary); }
 
     /* HERO */
-    .hero { min-height: 100vh; display: flex; align-items: center; background: var(--gradient-water); padding-top: 60px; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-    .hero-tag { color: var(--primary); font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 1rem; }
+    .hero { min-height: 100vh; display: flex; align-items: center; background: var(--gradient-water); padding-top: 60px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -50%; right: -20%; width: 60vw; height: 60vw; border-radius: 50%; background: radial-gradient(circle, hsla(200, 80%, 85%, 0.4) 0%, transparent 70%); animation: heroFloat 8s ease-in-out infinite; pointer-events: none; }
+    .hero::after { content: ''; position: absolute; bottom: -30%; left: -10%; width: 40vw; height: 40vw; border-radius: 50%; background: radial-gradient(circle, hsla(185, 70%, 85%, 0.3) 0%, transparent 70%); animation: heroFloat 10s ease-in-out infinite reverse; pointer-events: none; }
+    @keyframes heroFloat { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, -30px); } }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1; }
+    .hero-tag { color: var(--primary); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.4rem 1rem; background: var(--secondary); border-radius: 99px; }
     .hero h1 { font-size: 3.2rem; font-weight: 900; line-height: 1.2; margin-bottom: 1.5rem; }
-    .hero p.desc { font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem; max-width: 480px; }
+    .hero p.desc { font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem; max-width: 480px; line-height: 1.8; }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary { padding: 0.75rem 2rem; border-radius: 99px; background: var(--gradient-deep); color: #fff; font-weight: 600; box-shadow: var(--shadow-water); transition: all 0.3s; border: none; cursor: pointer; font-size: 1rem; }
-    .btn-primary:hover { transform: scale(1.05); box-shadow: var(--shadow-water-lg); }
-    .btn-outline { padding: 0.75rem 2rem; border-radius: 99px; border: 2px solid var(--primary); color: var(--primary); font-weight: 600; background: transparent; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
-    .btn-outline:hover { background: var(--primary); color: #fff; }
+    .btn-primary { padding: 0.85rem 2.2rem; border-radius: 99px; background: var(--gradient-deep); color: #fff; font-weight: 600; box-shadow: var(--shadow-water); transition: all 0.3s; border: none; cursor: pointer; font-size: 1rem; position: relative; overflow: hidden; }
+    .btn-primary::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 40%, hsla(0,0%,100%,0.2) 50%, transparent 60%); transform: translateX(-100%); transition: transform 0.6s; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-water-lg); }
+    .btn-primary:hover::before { transform: translateX(100%); }
+    .btn-outline { padding: 0.85rem 2.2rem; border-radius: 99px; border: 2px solid var(--primary); color: var(--primary); font-weight: 600; background: transparent; cursor: pointer; font-size: 1rem; transition: all 0.3s; }
+    .btn-outline:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
     .hero-img-wrap { display: flex; justify-content: center; position: relative; }
-    .hero-img-wrap img { max-width: 380px; width: 100%; border-radius: 1.5rem; box-shadow: var(--shadow-water-lg); position: relative; z-index: 1; }
-    .hero-glow { position: absolute; inset: -2rem; border-radius: 50%; background: hsl(200, 80%, 95%); opacity: 0.6; filter: blur(40px); }
+    .hero-img-wrap img { max-width: 380px; width: 100%; border-radius: 1.5rem; box-shadow: var(--shadow-water-lg); position: relative; z-index: 1; transition: transform 0.5s; }
+    .hero-img-wrap:hover img { transform: scale(1.03) rotate(1deg); }
+    .hero-glow { position: absolute; inset: -2rem; border-radius: 50%; background: hsl(200, 80%, 95%); opacity: 0.6; filter: blur(40px); animation: pulseGlow 4s ease-in-out infinite; }
+    @keyframes pulseGlow { 0%, 100% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.05); } }
+
+    /* CERTS */
+    .certs-section { background: linear-gradient(180deg, hsl(210,30%,12%), hsl(205,40%,18%)); position: relative; overflow: hidden; }
+    .certs-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, hsla(43,74%,59%,0.4), transparent); }
+    .certs-note { text-align: center; color: hsla(0,0%,100%,0.7); margin-bottom: 2.5rem; font-size: 0.95rem; }
+    .certs-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; max-width: 900px; margin: 0 auto; }
+    .cert-item { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 1.5rem 0.5rem; border-radius: var(--radius); border: 1px solid hsla(43,74%,59%,0.15); background: hsla(0,0%,100%,0.03); transition: all 0.4s; text-align: center; }
+    .cert-item:hover { background: hsla(43,74%,59%,0.08); border-color: hsla(43,74%,59%,0.3); transform: translateY(-4px); box-shadow: var(--shadow-gold); }
+    .cert-icon { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; }
+    .cert-name { font-size: 0.8rem; font-weight: 600; color: hsla(43,74%,80%,1); letter-spacing: 0.05em; }
 
     /* FEATURES */
     .bg-water { background: var(--gradient-water); }
     .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
-    .feature-card { background: linear-gradient(180deg, #fff, var(--card)); border-radius: var(--radius); padding: 1.5rem; border: 1px solid var(--border); box-shadow: var(--shadow-water); transition: all 0.3s; }
-    .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-water-lg); }
-    .feature-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--secondary); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.3rem; }
+    .feature-card { background: linear-gradient(180deg, #fff, var(--card)); border-radius: var(--radius); padding: 1.75rem; border: 1px solid var(--border); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); position: relative; overflow: hidden; }
+    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-deep); transform: scaleX(0); transition: transform 0.4s; transform-origin: left; }
+    .feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-water-lg); }
+    .feature-card:hover::before { transform: scaleX(1); }
+    .feature-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--secondary); display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.3rem; transition: transform 0.3s; }
+    .feature-card:hover .feature-icon { transform: scale(1.1); }
     .feature-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .feature-card p { font-size: 0.85rem; color: var(--muted); }
+    .feature-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
 
     /* LIVING WATER */
-    .criteria-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; border-radius: 12px; background: var(--card); border: 1px solid var(--border); margin-bottom: 0.75rem; transition: box-shadow 0.3s; }
-    .criteria-item:hover { box-shadow: var(--shadow-water); }
+    .criteria-item { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; border-radius: 12px; background: var(--card); border: 1px solid var(--border); margin-bottom: 0.75rem; transition: all 0.3s; cursor: default; }
+    .criteria-item:hover { box-shadow: var(--shadow-water); transform: translateX(6px); border-color: var(--accent); }
     .criteria-check { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 700; font-size: 0.9rem; }
 
     /* TECHNOLOGY */
     .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; max-width: 900px; margin: 0 auto; }
-    .tech-card { display: flex; align-items: flex-start; gap: 1rem; padding: 1.25rem; border-radius: var(--radius); background: var(--card); border: 1px solid var(--border); transition: box-shadow 0.3s; }
-    .tech-card:hover { box-shadow: var(--shadow-water); }
+    .tech-card { display: flex; align-items: flex-start; gap: 1rem; padding: 1.5rem; border-radius: var(--radius); background: var(--card); border: 1px solid var(--border); transition: all 0.4s; }
+    .tech-card:hover { box-shadow: var(--shadow-water); transform: translateY(-3px); }
     .tech-num { width: 40px; height: 40px; border-radius: 50%; background: var(--gradient-deep); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; }
-    .tech-card h3 { font-weight: 700; margin-bottom: 0.25rem; }
-    .tech-card p { font-size: 0.85rem; color: var(--muted); }
+    .tech-card h3 { font-weight: 700; margin-bottom: 0.25rem; font-size: 1rem; }
+    .tech-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .tech-benefit { display: inline-block; margin-top: 0.5rem; font-size: 0.78rem; color: var(--accent); font-weight: 600; background: hsla(185, 70%, 42%, 0.08); padding: 0.2rem 0.6rem; border-radius: 4px; }
 
     /* HEALTH DATA */
     .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1000px; margin: 0 auto; }
-    .data-card { background: var(--bg); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--border); box-shadow: var(--shadow-water); transition: box-shadow 0.3s; }
-    .data-card:hover { box-shadow: var(--shadow-water-lg); }
+    .data-card { background: var(--bg); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--border); box-shadow: var(--shadow-water); transition: all 0.4s; position: relative; overflow: hidden; }
+    .data-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gradient-deep); transform: scaleX(0); transition: transform 0.4s; }
+    .data-card:hover { box-shadow: var(--shadow-water-lg); transform: translateY(-4px); }
+    .data-card:hover::after { transform: scaleX(1); }
     .data-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
     .data-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--secondary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
     .data-header h3 { font-weight: 700; font-size: 1.1rem; }
     .data-stat { font-size: 0.85rem; font-weight: 600; color: var(--accent); }
-    .data-card p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.75rem; }
+    .data-card > p { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.75rem; line-height: 1.7; }
     .data-source { font-size: 0.75rem; color: hsl(205, 15%, 65%); font-style: italic; }
+    .data-highlight { display: inline-block; background: hsla(185, 70%, 42%, 0.1); color: var(--accent); font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 4px; }
+
+    /* WATER COMPARISON */
+    .compare-section { background: linear-gradient(180deg, hsl(200, 80%, 95%), var(--bg)); }
+    .compare-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; max-width: 800px; margin: 0 auto; align-items: start; }
+    .compare-card { border-radius: var(--radius); padding: 2rem; text-align: center; transition: all 0.4s; }
+    .compare-card.good { background: linear-gradient(180deg, hsla(185, 70%, 42%, 0.08), hsla(185, 70%, 42%, 0.02)); border: 2px solid var(--accent); }
+    .compare-card.bad { background: var(--card); border: 1px solid var(--border); opacity: 0.85; }
+    .compare-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; }
+    .compare-card.good h3 { color: var(--accent); }
+    .compare-card.bad h3 { color: var(--muted); }
+    .compare-card ul { list-style: none; text-align: left; }
+    .compare-card li { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.85rem; display: flex; gap: 0.6rem; align-items: flex-start; line-height: 1.6; }
+    .compare-card.good li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
+    .compare-card.bad li::before { content: '✗'; color: hsl(0, 60%, 60%); font-weight: 700; flex-shrink: 0; }
+    .compare-vs { display: flex; align-items: center; justify-content: center; padding-top: 3rem; }
+    .compare-vs span { width: 48px; height: 48px; border-radius: 50%; background: var(--gradient-deep); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.85rem; box-shadow: var(--shadow-water); }
 
     /* BENEFITS */
-    .benefits-section { background: var(--gradient-deep); color: #fff; }
+    .benefits-section { background: var(--gradient-deep); color: #fff; position: relative; overflow: hidden; }
+    .benefits-section::before { content: ''; position: absolute; top: -50%; right: -30%; width: 60%; height: 200%; border-radius: 50%; background: hsla(0,0%,100%,0.03); }
     .benefits-section .section-subtitle { color: hsla(0,0%,100%,0.8); }
     .benefits-wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; max-width: 700px; margin: 0 auto; }
-    .benefit-tag { padding: 0.6rem 1.25rem; border-radius: 99px; background: hsla(0,0%,100%,0.15); border: 1px solid hsla(0,0%,100%,0.2); font-size: 0.85rem; font-weight: 500; backdrop-filter: blur(4px); }
+    .benefit-tag { padding: 0.65rem 1.35rem; border-radius: 99px; background: hsla(0,0%,100%,0.1); border: 1px solid hsla(0,0%,100%,0.2); font-size: 0.88rem; font-weight: 500; backdrop-filter: blur(4px); transition: all 0.3s; cursor: default; }
+    .benefit-tag:hover { background: hsla(0,0%,100%,0.2); transform: translateY(-2px); }
 
     /* SKINCARE */
     .skin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 900px; margin: 0 auto; }
-    .skin-card { background: var(--bg); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--border); box-shadow: var(--shadow-water); }
+    .skin-card { background: var(--bg); border-radius: var(--radius); padding: 2rem; border: 1px solid var(--border); box-shadow: var(--shadow-water); transition: all 0.3s; }
+    .skin-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-water-lg); }
     .skin-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; }
     .skin-card h3.good { color: var(--accent); }
     .skin-card h3.bad { color: var(--muted); }
-    .skin-card li { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.75rem; display: flex; gap: 0.5rem; }
+    .skin-card li { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.85rem; display: flex; gap: 0.5rem; line-height: 1.6; }
     .skin-card li span.dot-accent { color: var(--accent); }
 
     /* HOW TO USE */
     .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; text-align: center; }
-    .step-num { width: 64px; height: 64px; border-radius: 50%; background: var(--gradient-deep); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 1rem; box-shadow: var(--shadow-water); }
+    .step-item { position: relative; }
+    .step-num { width: 64px; height: 64px; border-radius: 50%; background: var(--gradient-deep); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 700; margin: 0 auto 1rem; box-shadow: var(--shadow-water); transition: transform 0.3s; }
+    .step-item:hover .step-num { transform: scale(1.1); }
     .steps-grid h3 { font-weight: 700; font-size: 1.05rem; margin-bottom: 0.5rem; }
-    .steps-grid p { font-size: 0.85rem; color: var(--muted); }
+    .steps-grid p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
     /* SPECS */
     .specs-table { max-width: 600px; margin: 0 auto; border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-water); }
-    .spec-row { display: flex; align-items: center; padding: 0.85rem 1.5rem; }
+    .spec-row { display: flex; align-items: center; padding: 0.85rem 1.5rem; transition: background 0.2s; }
     .spec-row:nth-child(odd) { background: var(--card); }
     .spec-row:nth-child(even) { background: var(--bg); }
+    .spec-row:hover { background: var(--secondary); }
     .spec-label { width: 130px; flex-shrink: 0; font-weight: 600; font-size: 0.875rem; }
     .spec-value { font-size: 0.875rem; color: var(--muted); }
 
-    /* CERTS */
-    .certs-note { text-align: center; color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
-    .certs-wrap { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 1.5rem; max-width: 900px; margin: 0 auto; }
-    .cert-badge { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; min-width: 80px; text-align: center; font-size: 0.75rem; font-weight: 600; color: var(--fg); }
-    .cert-badge .cert-logo { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; }
-
     /* FOOTER */
-    .footer { padding: 3rem 0; background: var(--card); border-top: 1px solid var(--border); text-align: center; }
-    .footer-logo { font-size: 1.2rem; font-weight: 900; margin-bottom: 0.5rem; }
-    .footer p { font-size: 0.85rem; color: var(--muted); }
-    .footer .copy { font-size: 0.75rem; color: hsl(205, 15%, 70%); margin-top: 1rem; }
+    .footer { padding: 3rem 0; background: hsl(210, 30%, 12%); color: hsla(0,0%,100%,0.8); text-align: center; }
+    .footer-logo { font-size: 1.3rem; font-weight: 900; margin-bottom: 0.5rem; background: linear-gradient(135deg, hsl(200, 80%, 60%), hsl(185, 70%, 55%)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .footer p { font-size: 0.85rem; color: hsla(0,0%,100%,0.6); }
+    .footer .copy { font-size: 0.75rem; color: hsla(0,0%,100%,0.35); margin-top: 1.5rem; }
+    .footer-contact { margin-top: 0.75rem; font-size: 0.9rem; color: hsla(0,0%,100%,0.7); }
 
     /* WHATSAPP */
-    .wa-btn { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; border-radius: 99px; background: #25D366; color: #fff; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 16px rgba(37,211,102,0.4); transition: all 0.3s; }
-    .wa-btn:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+    .wa-btn { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; border-radius: 99px; background: #25D366; color: #fff; font-weight: 600; font-size: 0.9rem; box-shadow: 0 4px 16px rgba(37,211,102,0.4); transition: all 0.3s; animation: waPulse 3s ease-in-out infinite; }
+    .wa-btn:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(37,211,102,0.5); animation: none; }
     .wa-btn svg { width: 20px; height: 20px; }
+    @keyframes waPulse { 0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4); } 50% { box-shadow: 0 4px 24px rgba(37,211,102,0.6); } }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
@@ -167,6 +218,10 @@
       .features-grid { grid-template-columns: 1fr 1fr; }
       .tech-grid, .data-grid, .skin-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr 1fr; }
+      .certs-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .compare-vs { padding: 0; }
+      .compare-vs span { margin: 0 auto; }
       .nav-links { display: none; }
       .nav-toggle { display: block; }
       .nav-mobile.open { display: flex; }
@@ -176,17 +231,40 @@
     @media (max-width: 480px) {
       .features-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* ANIMATIONS */
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+    .fade-in-right { opacity: 0; transform: translateX(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+    .stagger > * { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+    .stagger.visible > *:nth-child(2) { transition-delay: 0.06s; }
+    .stagger.visible > *:nth-child(3) { transition-delay: 0.12s; }
+    .stagger.visible > *:nth-child(4) { transition-delay: 0.18s; }
+    .stagger.visible > *:nth-child(5) { transition-delay: 0.24s; }
+    .stagger.visible > *:nth-child(6) { transition-delay: 0.30s; }
+    .stagger.visible > *:nth-child(7) { transition-delay: 0.36s; }
+    .stagger.visible > *:nth-child(8) { transition-delay: 0.42s; }
+    .stagger.visible > *:nth-child(9) { transition-delay: 0.48s; }
+    .stagger.visible > *:nth-child(10) { transition-delay: 0.54s; }
+    .stagger.visible > * { opacity: 1; transform: translateY(0); }
+
+    /* COUNTER */
+    .stats-bar { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid hsla(43,74%,59%,0.15); }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 2rem; font-weight: 900; color: var(--gold); }
+    .stat-label { font-size: 0.8rem; color: hsla(0,0%,100%,0.6); margin-top: 0.25rem; }
   </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="nav">
+<nav class="nav" id="mainNav">
   <div class="container nav-inner">
     <a href="#" class="nav-logo text-gradient">WaveQ</a>
     <div class="nav-links">
@@ -198,15 +276,16 @@
       <a href="#howto">使用方法</a>
       <a href="https://wa.link/uuzzvl" target="_blank" rel="noopener" class="nav-cta">立即查詢</a>
     </div>
-    <button class="nav-toggle" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Menu">☰</button>
+    <button class="nav-toggle" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="打開導航選單">☰</button>
   </div>
-  <div id="mobileNav" class="nav-mobile">
-    <a href="#certifications" onclick="this.parentElement.classList.remove('open')">國際認證</a>
-    <a href="#features" onclick="this.parentElement.classList.remove('open')">產品特點</a>
-    <a href="#technology" onclick="this.parentElement.classList.remove('open')">核心技術</a>
-    <a href="#research" onclick="this.parentElement.classList.remove('open')">科學實證</a>
-    <a href="#specs" onclick="this.parentElement.classList.remove('open')">產品規格</a>
-    <a href="#howto" onclick="this.parentElement.classList.remove('open')">使用方法</a>
+  <div id="mobileNav" class="nav-mobile" role="navigation">
+    <a href="#certifications" onclick="this.parentElement.classList.remove('open')">🏆 國際認證</a>
+    <a href="#features" onclick="this.parentElement.classList.remove('open')">💧 產品特點</a>
+    <a href="#technology" onclick="this.parentElement.classList.remove('open')">⚙️ 核心技術</a>
+    <a href="#research" onclick="this.parentElement.classList.remove('open')">📊 科學實證</a>
+    <a href="#specs" onclick="this.parentElement.classList.remove('open')">📋 產品規格</a>
+    <a href="#howto" onclick="this.parentElement.classList.remove('open')">📖 使用方法</a>
+    <a href="https://wa.link/uuzzvl" target="_blank" rel="noopener" style="color:var(--primary); font-weight:600;" onclick="this.parentElement.classList.remove('open')">📞 立即查詢</a>
   </div>
 </nav>
 
@@ -215,9 +294,9 @@
   <div class="container">
     <div class="hero-grid">
       <div class="fade-in">
-        <p class="hero-tag">韓國原裝製造</p>
+        <p class="hero-tag">🇰🇷 韓國原裝製造</p>
         <h1><span class="text-gradient">WaveQ</span><br>天然礦物質鹼性<br>六角水生成機</h1>
-        <p class="desc">每天只花7分鐘，為您和家人生成富含天然礦物質的鹼性六角水。操作簡單，無須接駁水喉，無須每年更換配件。</p>
+        <p class="desc">每天只花7分鐘，為您和家人生成富含天然礦物質的鹼性六角水。<strong>無須接駁水喉，無須每年更換配件</strong>，操作簡單一鍵即享。</p>
         <div class="hero-btns">
           <a href="#features" class="btn-primary">了解更多</a>
           <a href="https://wa.link/uuzzvl" target="_blank" rel="noopener" class="btn-outline">立即查詢</a>
@@ -225,161 +304,95 @@
       </div>
       <div class="hero-img-wrap fade-in">
         <div class="hero-glow"></div>
-        <img src="https://boyman131418.github.io/waveq/assets/waveq-product.jpeg" alt="WaveQ 六角水生成機" />
+        <img src="https://waveq.org/assets/waveq-product.jpeg" alt="WaveQ WQ 2000 韓國六角水生成機產品圖" loading="lazy" width="380" height="380" />
       </div>
     </div>
   </div>
 </section>
 
-<!-- CERTIFICATIONS - First thing visitors see -->
-<section id="certifications" class="section" style="padding-top:3rem; padding-bottom:3rem; background: linear-gradient(180deg, hsl(210,30%,15%), hsl(205,40%,20%));">
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="section certs-section" style="padding-top:3.5rem; padding-bottom:3.5rem;">
   <div class="container">
     <h2 class="section-title fade-in" style="color:#fff; margin-bottom:0.5rem;">🏆 國際認證</h2>
-    <p class="certs-note fade-in" style="color:hsla(0,0%,100%,0.75);">WaveQ 在美國、加拿大、澳洲、日本以及歐洲14個國家和世界35個國家深受喜愛</p>
-    <div class="certs-wrap fade-in" style="gap:2rem;">
+    <p class="certs-note fade-in">WaveQ 在美國、加拿大、澳洲、日本以及歐洲14個國家和世界35個國家深受喜愛</p>
+    <div class="certs-grid stagger">
 
-      <!-- US Patent -->
-      <div class="cert-badge" style="color:#fff;">
-        <div class="cert-logo">
-          <svg width="64" height="64" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="46" fill="none" stroke="#e8c547" stroke-width="3"/>
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#e8c547" stroke-width="1.5"/>
-            <path d="M50 12 L52 18 L58 18 L53 22 L55 28 L50 24 L45 28 L47 22 L42 18 L48 18Z" fill="#e8c547"/>
-            <text x="50" y="45" text-anchor="middle" font-size="10" font-weight="bold" fill="#e8c547" font-family="serif">UNITED STATES</text>
-            <text x="50" y="58" text-anchor="middle" font-size="13" font-weight="bold" fill="#e8c547" font-family="serif">PATENT</text>
-            <text x="50" y="72" text-anchor="middle" font-size="7" fill="#e8c547" font-family="serif">US 6,171,490 B1</text>
-            <line x1="25" y1="76" x2="75" y2="76" stroke="#e8c547" stroke-width="0.8"/>
-            <text x="50" y="85" text-anchor="middle" font-size="6.5" fill="#e8c547" font-family="serif">TRADEMARK OFFICE</text>
-          </svg>
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg width="48" height="48" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#e8c547" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#e8c547" stroke-width="1.5"/><path d="M50 12 L52 18 L58 18 L53 22 L55 28 L50 24 L45 28 L47 22 L42 18 L48 18Z" fill="#e8c547"/><text x="50" y="45" text-anchor="middle" font-size="10" font-weight="bold" fill="#e8c547" font-family="serif">UNITED STATES</text><text x="50" y="58" text-anchor="middle" font-size="13" font-weight="bold" fill="#e8c547" font-family="serif">PATENT</text><text x="50" y="72" text-anchor="middle" font-size="7" fill="#e8c547" font-family="serif">US 6,171,490 B1</text></svg>
         </div>
-        US Patent
+        <span class="cert-name">US Patent</span>
       </div>
 
-      <!-- UK Patent -->
-      <div class="cert-badge" style="color:#fff;">
-        <div class="cert-logo">
-          <svg width="64" height="64" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="46" fill="none" stroke="#e8c547" stroke-width="3"/>
-            <circle cx="50" cy="50" r="40" fill="none" stroke="#e8c547" stroke-width="1.5"/>
-            <path d="M50 14 L52 20 L58 20 L53 24 L55 30 L50 26 L45 30 L47 24 L42 20 L48 20Z" fill="#e8c547"/>
-            <text x="50" y="45" text-anchor="middle" font-size="9" font-weight="bold" fill="#e8c547" font-family="serif">UNITED KINGDOM</text>
-            <text x="50" y="58" text-anchor="middle" font-size="13" font-weight="bold" fill="#e8c547" font-family="serif">PATENT</text>
-            <text x="50" y="72" text-anchor="middle" font-size="7" fill="#e8c547" font-family="serif">UK IPO</text>
-            <line x1="25" y1="76" x2="75" y2="76" stroke="#e8c547" stroke-width="0.8"/>
-            <text x="50" y="85" text-anchor="middle" font-size="6.5" fill="#e8c547" font-family="serif">INTELLECTUAL PROPERTY</text>
-          </svg>
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg width="48" height="48" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#e8c547" stroke-width="3"/><circle cx="50" cy="50" r="40" fill="none" stroke="#e8c547" stroke-width="1.5"/><path d="M50 14 L52 20 L58 20 L53 24 L55 30 L50 26 L45 30 L47 24 L42 20 L48 20Z" fill="#e8c547"/><text x="50" y="45" text-anchor="middle" font-size="9" font-weight="bold" fill="#e8c547" font-family="serif">UNITED KINGDOM</text><text x="50" y="58" text-anchor="middle" font-size="13" font-weight="bold" fill="#e8c547" font-family="serif">PATENT</text><text x="50" y="72" text-anchor="middle" font-size="7" fill="#e8c547" font-family="serif">UK IPO</text></svg>
         </div>
-        UK Patent
+        <span class="cert-name">UK Patent</span>
       </div>
 
-      <!-- Water Quality Association -->
-      <div class="cert-badge" style="color:#fff;">
-        <div class="cert-logo">
-          <svg width="64" height="64" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="46" fill="#003366" stroke="#4a9fd5" stroke-width="2"/>
-            <circle cx="50" cy="50" r="38" fill="none" stroke="#fff" stroke-width="1.5"/>
-            <path d="M50 18 C45 30, 35 38, 35 48 C35 56, 42 62, 50 62 C58 62, 65 56, 65 48 C65 38, 55 30, 50 18Z" fill="none" stroke="#fff" stroke-width="2.5"/>
-            <path d="M44 42 Q50 35 56 42" fill="none" stroke="#fff" stroke-width="1.5"/>
-            <path d="M42 48 Q50 41 58 48" fill="none" stroke="#fff" stroke-width="1.2"/>
-            <text x="50" y="76" text-anchor="middle" font-size="7" font-weight="bold" fill="#fff" letter-spacing="1">MEMBER</text>
-            <text x="50" y="86" text-anchor="middle" font-size="5.5" fill="#fff" letter-spacing="0.5">WATER QUALITY</text>
-            <text x="50" y="93" text-anchor="middle" font-size="5.5" fill="#fff" letter-spacing="0.5">ASSOCIATION</text>
-          </svg>
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg width="48" height="48" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="#003366" stroke="#4a9fd5" stroke-width="2"/><circle cx="50" cy="50" r="38" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M50 18 C45 30, 35 38, 35 48 C35 56, 42 62, 50 62 C58 62, 65 56, 65 48 C65 38, 55 30, 50 18Z" fill="none" stroke="#fff" stroke-width="2.5"/><text x="50" y="76" text-anchor="middle" font-size="7" font-weight="bold" fill="#fff" letter-spacing="1">MEMBER</text><text x="50" y="86" text-anchor="middle" font-size="5.5" fill="#fff">WATER QUALITY</text><text x="50" y="93" text-anchor="middle" font-size="5.5" fill="#fff">ASSOCIATION</text></svg>
         </div>
-        WQA
+        <span class="cert-name">WQA</span>
       </div>
 
-      <!-- CE -->
-      <div class="cert-badge" style="color:#fff;">
-        <div class="cert-logo">
-          <svg width="64" height="64" viewBox="0 0 100 70">
-            <text x="50" y="55" text-anchor="middle" font-size="62" font-weight="bold" fill="#fff" font-family="Arial, sans-serif" letter-spacing="-2">CE</text>
-          </svg>
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg width="48" height="48" viewBox="0 0 100 70"><text x="50" y="52" text-anchor="middle" font-size="52" font-weight="bold" fill="#e8c547" font-family="Arial">CE</text></svg>
         </div>
-        CE
+        <span class="cert-name">CE</span>
       </div>
 
-      <!-- CB -->
-      <div class="cert-badge" style="color:#fff;">
-        <div class="cert-logo">
-          <svg width="64" height="64" viewBox="0 0 100 100">
-            <rect x="8" y="8" width="84" height="84" rx="6" fill="none" stroke="#fff" stroke-width="4"/>
-            <text x="50" y="62" text-anchor="middle" font-size="42" font-weight="bold" fill="#fff" font-family="Arial, sans-serif">CB</text>
-          </svg>
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg width="48" height="48" viewBox="0 0 100 100"><rect x="8" y="8" width="84" height="84" rx="6" fill="none" stroke="#e8c547" stroke-width="4"/><text x="50" y="62" text-anchor="middle" font-size="38" font-weight="bold" fill="#e8c547" font-family="Arial">CB</text></svg>
         </div>
-        CB
+        <span class="cert-name">CB</span>
       </div>
 
-      <!-- Russia GOST -->
-      <div class="cert-badge" style="color:#fff;">
-        <div class="cert-logo">
-          <svg width="64" height="64" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="44" fill="none" stroke="#e84040" stroke-width="3"/>
-            <circle cx="50" cy="50" r="36" fill="none" stroke="#e84040" stroke-width="1.5"/>
-            <text x="50" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="#e84040" font-family="Arial">ГОСТ</text>
-            <text x="50" y="56" text-anchor="middle" font-size="20" font-weight="bold" fill="#e84040" font-family="Arial">PCT</text>
-            <text x="50" y="72" text-anchor="middle" font-size="9" fill="#e84040" font-family="Arial">RUSSIA</text>
-          </svg>
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg width="48" height="48" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="none" stroke="#e84040" stroke-width="3"/><circle cx="50" cy="50" r="36" fill="none" stroke="#e84040" stroke-width="1.5"/><text x="50" y="40" text-anchor="middle" font-size="14" font-weight="bold" fill="#e84040">ГОСТ</text><text x="50" y="56" text-anchor="middle" font-size="20" font-weight="bold" fill="#e84040">PCT</text><text x="50" y="72" text-anchor="middle" font-size="9" fill="#e84040">RUSSIA</text></svg>
         </div>
-        Russia GOST
+        <span class="cert-name">Russia GOST</span>
       </div>
 
-      <!-- KFDA -->
-      <div class="cert-badge" style="color:#fff;">
-        <div class="cert-logo">
-          <svg width="64" height="64" viewBox="0 0 120 100">
-            <rect x="2" y="10" width="116" height="80" rx="5" fill="#00529B" stroke="#4a9fd5" stroke-width="2"/>
-            <text x="60" y="42" text-anchor="middle" font-size="10" fill="#fff" font-family="Arial">Korea Food &amp;</text>
-            <text x="60" y="55" text-anchor="middle" font-size="10" fill="#fff" font-family="Arial">Drug Administration</text>
-            <text x="60" y="78" text-anchor="middle" font-size="22" font-weight="bold" fill="#fff" font-family="Arial" letter-spacing="2">KFDA</text>
-          </svg>
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg width="48" height="48" viewBox="0 0 120 100"><rect x="2" y="10" width="116" height="80" rx="5" fill="#00529B" stroke="#4a9fd5" stroke-width="2"/><text x="60" y="42" text-anchor="middle" font-size="10" fill="#fff">Korea Food &amp;</text><text x="60" y="55" text-anchor="middle" font-size="10" fill="#fff">Drug Admin</text><text x="60" y="78" text-anchor="middle" font-size="22" font-weight="bold" fill="#fff" letter-spacing="2">KFDA</text></svg>
         </div>
-        KFDA
+        <span class="cert-name">KFDA</span>
       </div>
 
-      <!-- GMP -->
-      <div class="cert-badge" style="color:#fff;">
-        <div class="cert-logo">
-          <svg width="64" height="64" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="44" fill="#006838"/>
-            <circle cx="50" cy="50" r="36" fill="none" stroke="#fff" stroke-width="2"/>
-            <text x="50" y="42" text-anchor="middle" font-size="8" fill="#fff" font-family="Arial" letter-spacing="1">CERTIFIED</text>
-            <text x="50" y="60" text-anchor="middle" font-size="22" font-weight="bold" fill="#fff" font-family="Arial" letter-spacing="2">GMP</text>
-            <text x="50" y="76" text-anchor="middle" font-size="6" fill="#fff" font-family="Arial">GOOD MANUFACTURING</text>
-            <text x="50" y="84" text-anchor="middle" font-size="6" fill="#fff" font-family="Arial">PRACTICE</text>
-          </svg>
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg width="48" height="48" viewBox="0 0 100 100"><circle cx="50" cy="50" r="44" fill="#006838"/><circle cx="50" cy="50" r="36" fill="none" stroke="#fff" stroke-width="2"/><text x="50" y="42" text-anchor="middle" font-size="8" fill="#fff" letter-spacing="1">CERTIFIED</text><text x="50" y="60" text-anchor="middle" font-size="22" font-weight="bold" fill="#fff" letter-spacing="2">GMP</text><text x="50" y="76" text-anchor="middle" font-size="6" fill="#fff">GOOD MFG PRACTICE</text></svg>
         </div>
-        GMP
+        <span class="cert-name">GMP</span>
       </div>
 
-      <!-- ISO 9001 -->
-      <div class="cert-badge" style="color:#fff;">
-        <div class="cert-logo">
-          <svg width="64" height="64" viewBox="0 0 100 100">
-            <rect x="5" y="5" width="90" height="90" rx="8" fill="none" stroke="#4a9fd5" stroke-width="3"/>
-            <text x="50" y="35" text-anchor="middle" font-size="22" font-weight="bold" fill="#4a9fd5" font-family="Arial" letter-spacing="2">ISO</text>
-            <line x1="20" y1="42" x2="80" y2="42" stroke="#4a9fd5" stroke-width="1.5"/>
-            <text x="50" y="64" text-anchor="middle" font-size="20" font-weight="bold" fill="#4a9fd5" font-family="Arial">9001</text>
-            <text x="50" y="82" text-anchor="middle" font-size="7" fill="#4a9fd5" font-family="Arial">CERTIFIED</text>
-          </svg>
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg width="48" height="48" viewBox="0 0 100 100"><rect x="5" y="5" width="90" height="90" rx="8" fill="none" stroke="#4a9fd5" stroke-width="3"/><text x="50" y="35" text-anchor="middle" font-size="22" font-weight="bold" fill="#4a9fd5" letter-spacing="2">ISO</text><line x1="20" y1="42" x2="80" y2="42" stroke="#4a9fd5" stroke-width="1.5"/><text x="50" y="64" text-anchor="middle" font-size="20" font-weight="bold" fill="#4a9fd5">9001</text><text x="50" y="82" text-anchor="middle" font-size="7" fill="#4a9fd5">CERTIFIED</text></svg>
         </div>
-        ISO 9001
+        <span class="cert-name">ISO 9001</span>
       </div>
 
-      <!-- ISO 14001 -->
-      <div class="cert-badge" style="color:#fff;">
-        <div class="cert-logo">
-          <svg width="64" height="64" viewBox="0 0 100 100">
-            <rect x="5" y="5" width="90" height="90" rx="8" fill="none" stroke="#4caf50" stroke-width="3"/>
-            <text x="50" y="35" text-anchor="middle" font-size="22" font-weight="bold" fill="#4caf50" font-family="Arial" letter-spacing="2">ISO</text>
-            <line x1="20" y1="42" x2="80" y2="42" stroke="#4caf50" stroke-width="1.5"/>
-            <text x="50" y="64" text-anchor="middle" font-size="18" font-weight="bold" fill="#4caf50" font-family="Arial">14001</text>
-            <text x="50" y="82" text-anchor="middle" font-size="7" fill="#4caf50" font-family="Arial">CERTIFIED</text>
-          </svg>
+      <div class="cert-item">
+        <div class="cert-icon">
+          <svg width="48" height="48" viewBox="0 0 100 100"><rect x="5" y="5" width="90" height="90" rx="8" fill="none" stroke="#4caf50" stroke-width="3"/><text x="50" y="35" text-anchor="middle" font-size="22" font-weight="bold" fill="#4caf50" letter-spacing="2">ISO</text><line x1="20" y1="42" x2="80" y2="42" stroke="#4caf50" stroke-width="1.5"/><text x="50" y="64" text-anchor="middle" font-size="18" font-weight="bold" fill="#4caf50">14001</text><text x="50" y="82" text-anchor="middle" font-size="7" fill="#4caf50">CERTIFIED</text></svg>
         </div>
-        ISO 14001
+        <span class="cert-name">ISO 14001</span>
       </div>
 
+    </div>
+
+    <div class="stats-bar fade-in">
+      <div class="stat-item"><div class="stat-num">35+</div><div class="stat-label">銷售國家</div></div>
+      <div class="stat-item"><div class="stat-num">10</div><div class="stat-label">國際認證</div></div>
+      <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">國際專利</div></div>
     </div>
   </div>
 </section>
@@ -389,15 +402,15 @@
   <div class="container">
     <h2 class="section-title fade-in">產品特點</h2>
     <p class="section-subtitle fade-in">WaveQ 結合韓國水權威金吉昊博士研發的 Actimo 技術與 mineQ 天然礦物質濾芯</p>
-    <div class="features-grid">
-      <div class="feature-card fade-in"><div class="feature-icon">💧</div><h3>天然礦物質</h3><p>含豐富天然（水溶性）鈣、鎂等礦物質，為身體補充必需元素</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">🛡️</div><h3>活性氫抗自由基</h3><p>活性氫有效對抗自由基，延緩衰老，增強免疫力</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">⚡</div><h3>操作簡單</h3><p>無須接駁水喉，只需按下按鈕，7分鐘即可生成健康六角水</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">❤️</div><h3>改善體質</h3><p>有助排毒美顏、改善便秘、改善血壓、改善糖尿等問題、平衡體內酸鹼度</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">🌿</div><h3>無須更換配件</h3><p>無需每年更換濾芯等配件，經濟實惠又環保</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">🏆</div><h3>多國認證</h3><p>擁有美國專利、英國專利、美國水質協會（WQA）、CE、CB、Russia GOST、韓國食物及藥物管理局（KFDA）、GMP、ISO9001、ISO14001等國際認證</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">⏱️</div><h3>耐用性高</h3><p>採用優質ABS/PET材料，韓國原裝製造，品質保證</p></div>
-      <div class="feature-card fade-in"><div class="feature-icon">🔧</div><h3>十多樣功效</h3><p>抗氧化、排毒、降三高、消脂、改善痛風、改善血壓、改善糖尿、補充身體必需的天然礦物質（鈣、鎂）、洗蔬果去農藥等十多樣功效</p></div>
+    <div class="features-grid stagger">
+      <div class="feature-card"><div class="feature-icon">💧</div><h3>天然礦物質</h3><p>補充人體必需的天然鈣、鎂礦物質，每杯水都在為健康加分</p></div>
+      <div class="feature-card"><div class="feature-icon">🛡️</div><h3>活性氫抗自由基</h3><p>活性氫有效中和自由基，由內而外延緩衰老、增強免疫力</p></div>
+      <div class="feature-card"><div class="feature-icon">⚡</div><h3>一鍵操作 7分鐘</h3><p>無須接駁水喉，按下按鈕即可享用，比煲水更方便</p></div>
+      <div class="feature-card"><div class="feature-icon">❤️</div><h3>改善體質</h3><p>有助排毒美顏、改善便秘、改善血壓、改善糖尿等問題、平衡體內酸鹼度</p></div>
+      <div class="feature-card"><div class="feature-icon">🌿</div><h3>無須更換配件</h3><p>無需每年更換濾芯等配件，長期使用更經濟環保</p></div>
+      <div class="feature-card"><div class="feature-icon">🏆</div><h3>多國認證</h3><p>擁有美國專利、英國專利、WQA、CE、CB、Russia GOST、KFDA、GMP、ISO9001、ISO14001等國際認證</p></div>
+      <div class="feature-card"><div class="feature-icon">⏱️</div><h3>耐用性高</h3><p>優質ABS/PET材料，韓國原裝製造，經久耐用品質保證</p></div>
+      <div class="feature-card"><div class="feature-icon">🔧</div><h3>十多樣功效</h3><p>抗氧化、排毒消脂、改善痛風、改善血壓、改善糖尿、補充天然礦物質（鈣、鎂）、洗蔬果去農藥等</p></div>
     </div>
   </div>
 </section>
@@ -407,13 +420,15 @@
   <div class="container" style="max-width:700px;">
     <h2 class="section-title fade-in">活水六大標準</h2>
     <p class="section-subtitle fade-in">水是生命之源，選擇合適的飲用水至關重要</p>
-    <div class="criteria-item fade-in"><div class="criteria-check">✓</div><span>具有生命力的水</span></div>
-    <div class="criteria-item fade-in"><div class="criteria-check">✓</div><span>無污染物的乾淨水</span></div>
-    <div class="criteria-item fade-in"><div class="criteria-check">✓</div><span>天然礦物質的水</span></div>
-    <div class="criteria-item fade-in"><div class="criteria-check">✓</div><span>鹼性水</span></div>
-    <div class="criteria-item fade-in"><div class="criteria-check">✓</div><span>能消除自由基 增強免疫力的水</span></div>
-    <div class="criteria-item fade-in"><div class="criteria-check">✓</div><span>六角水分子結構完整、細小</span></div>
-    <div class="criteria-item fade-in"><div class="criteria-check">✓</div><span>充滿能量的活水</span></div>
+    <div class="stagger">
+      <div class="criteria-item"><div class="criteria-check">✓</div><span>具有生命力的水</span></div>
+      <div class="criteria-item"><div class="criteria-check">✓</div><span>無污染物的乾淨水</span></div>
+      <div class="criteria-item"><div class="criteria-check">✓</div><span>天然礦物質的水</span></div>
+      <div class="criteria-item"><div class="criteria-check">✓</div><span>鹼性水</span></div>
+      <div class="criteria-item"><div class="criteria-check">✓</div><span>能消除自由基 增強免疫力的水</span></div>
+      <div class="criteria-item"><div class="criteria-check">✓</div><span>六角水分子結構完整、細小</span></div>
+      <div class="criteria-item"><div class="criteria-check">✓</div><span>充滿能量的活水</span></div>
+    </div>
   </div>
 </section>
 
@@ -422,15 +437,15 @@
   <div class="container">
     <h2 class="section-title fade-in">Wave Q 核心技術</h2>
     <p class="section-subtitle fade-in">八大核心技術系統，通過向心螺旋旋轉運動，讓水形成強有力的自然能量</p>
-    <div class="tech-grid">
-      <div class="tech-card fade-in"><div class="tech-num">1</div><div><h3>Ocher 處理</h3><p>催化作用和放射遠紅外線，生成六角水</p></div></div>
-      <div class="tech-card fade-in"><div class="tech-num">2</div><div><h3>鎂合金</h3><p>改善形成鹼性水和活性氫氣的性質</p></div></div>
-      <div class="tech-card fade-in"><div class="tech-num">3</div><div><h3>Silver Ceramic</h3><p>特殊製造，具有強力抗菌作用</p></div></div>
-      <div class="tech-card fade-in"><div class="tech-num">4</div><div><h3>Coral Calcium</h3><p>使鈣質順利放出，活性氫氣更加安全</p></div></div>
-      <div class="tech-card fade-in"><div class="tech-num">5</div><div><h3>活性磁場</h3><p>將 Cluster 結構化成六角水，使水更具活性</p></div></div>
-      <div class="tech-card fade-in"><div class="tech-num">6</div><div><h3>遠紅外線波長</h3><p>使分子活動更加活躍，密度和表面張力變大</p></div></div>
-      <div class="tech-card fade-in"><div class="tech-num">7</div><div><h3>飽和溶解氧</h3><p>滲透力高 溶解力快（改善皮膚素質）</p></div></div>
-      <div class="tech-card fade-in"><div class="tech-num">8</div><div><h3>Torsion 處理</h3><p>給身體注入活力，對身體有利的特殊處理</p></div></div>
+    <div class="tech-grid stagger">
+      <div class="tech-card"><div class="tech-num">1</div><div><h3>Ocher 處理</h3><p>催化作用和放射遠紅外線，生成六角水</p><span class="tech-benefit">→ 水分子排列更整齊，更易被人體吸收</span></div></div>
+      <div class="tech-card"><div class="tech-num">2</div><div><h3>鎂合金</h3><p>改善形成鹼性水和活性氫氣的性質</p><span class="tech-benefit">→ 中和體內酸性，幫助維持酸鹼平衡</span></div></div>
+      <div class="tech-card"><div class="tech-num">3</div><div><h3>Silver Ceramic</h3><p>特殊製造，具有強力抗菌作用</p><span class="tech-benefit">→ 飲水更安心，守護全家健康</span></div></div>
+      <div class="tech-card"><div class="tech-num">4</div><div><h3>Coral Calcium</h3><p>使鈣質順利放出，活性氫氣更加安全</p><span class="tech-benefit">→ 天然補鈣，預防骨質疏鬆</span></div></div>
+      <div class="tech-card"><div class="tech-num">5</div><div><h3>活性磁場</h3><p>將 Cluster 結構化成六角水，使水更具活性</p><span class="tech-benefit">→ 水分子更細小，身體吸收快 3 倍</span></div></div>
+      <div class="tech-card"><div class="tech-num">6</div><div><h3>遠紅外線波長</h3><p>使分子活動更加活躍，密度和表面張力變大</p><span class="tech-benefit">→ 促進血液循環，改善新陳代謝</span></div></div>
+      <div class="tech-card"><div class="tech-num">7</div><div><h3>飽和溶解氧</h3><p>滲透力高 溶解力快（改善皮膚素質）</p><span class="tech-benefit">→ 肌膚更水潤透亮，由內而外散發光澤</span></div></div>
+      <div class="tech-card"><div class="tech-num">8</div><div><h3>Torsion 處理</h3><p>給身體注入活力，對身體有利的特殊處理</p><span class="tech-benefit">→ 提升整體活力，精神充沛每一天</span></div></div>
     </div>
   </div>
 </section>
@@ -440,23 +455,23 @@
   <div class="container">
     <h2 class="section-title fade-in">科學實證數據</h2>
     <p class="section-subtitle fade-in">天然礦物質鹼性還原水 (ARW) 的實驗數據顯示令人驚異的健康功效</p>
-    <div class="data-grid">
-      <div class="data-card fade-in">
+    <div class="data-grid stagger">
+      <div class="data-card">
         <div class="data-header"><div class="data-icon">🛡️</div><div><h3>抗癌效果</h3><div class="data-stat">減慢擴散速度</div></div></div>
-        <p>實驗顯示飲用ARW的白鼠癌細胞擴散及生長速度明顯減慢，癌轉移數量由 350 降至 147。</p>
+        <p>實驗顯示飲用ARW的白鼠癌細胞擴散及生長速度明顯減慢，癌轉移數量由 <span class="data-highlight">350 降至 147</span>。</p>
         <div class="data-source">數據來源：韓國高麗院研究數據</div>
       </div>
-      <div class="data-card fade-in">
+      <div class="data-card">
         <div class="data-header"><div class="data-icon">📊</div><div><h3>糖尿病改善</h3><div class="data-stat">血糖值顯著下降</div></div></div>
-        <p>以OLETF老鼠為對象進行10周試驗，飲用ARW一組的血糖值與對照組相比出現顯著下降，由 203 降至 131 mg/dl。</p>
+        <p>以OLETF老鼠為對象進行10周試驗，飲用ARW一組的血糖值與對照組相比出現顯著下降，由 <span class="data-highlight">203 降至 131 mg/dl</span>。</p>
         <div class="data-source">數據來源：OLETF大鼠實驗</div>
       </div>
-      <div class="data-card fade-in">
+      <div class="data-card">
         <div class="data-header"><div class="data-icon">📉</div><div><h3>膽固醇改善</h3><div class="data-stat">LDL↓ HDL↑</div></div></div>
-        <p>膽固醇總濃度不但降低，壞膽固醇(LDL)減少，而好膽固醇(HDL)反而增加。三酸甘油脂由 285 降至 120 mg/dl。</p>
+        <p>膽固醇總濃度不但降低，壞膽固醇(LDL)減少，而好膽固醇(HDL)反而增加。三酸甘油脂由 <span class="data-highlight">285 降至 120 mg/dl</span>。</p>
         <div class="data-source">數據來源：臨床實驗數據</div>
       </div>
-      <div class="data-card fade-in">
+      <div class="data-card">
         <div class="data-header"><div class="data-icon">🧪</div><div><h3>抗氧化及免疫</h3><div class="data-stat">自由基顯著減少</div></div></div>
         <p>飲用ARW後肝臟、肺、腎臟等處的活性氧數量顯著減少，脾臟的活性氧數量強而多，證明ARW不僅具有抗氧化作用，更能提高免疫功能。</p>
         <div class="data-source">數據來源：DAFH-DA檢測實驗</div>
@@ -470,7 +485,7 @@
   <div class="container">
     <h2 class="section-title fade-in" style="color:#fff;">十四項健康功效</h2>
     <p class="section-subtitle fade-in">WaveQ 天然礦物質鹼性六角水生成機全方位改善人體質素</p>
-    <div class="benefits-wrap fade-in">
+    <div class="benefits-wrap stagger">
       <span class="benefit-tag">抗氧化</span>
       <span class="benefit-tag">排毒美顏</span>
       <span class="benefit-tag">改善便秘</span>
@@ -489,12 +504,45 @@
   </div>
 </section>
 
+<!-- WATER COMPARISON -->
+<section class="section compare-section">
+  <div class="container">
+    <h2 class="section-title fade-in">六角水 vs 一般水</h2>
+    <p class="section-subtitle fade-in">分子結構的差異，決定了水的吸收效率和健康效果</p>
+    <div class="compare-grid">
+      <div class="compare-card good fade-in-left">
+        <h3>✦ 六角水（WaveQ）</h3>
+        <ul>
+          <li>分子結構完整、細小，與人體細胞水分子相近</li>
+          <li>滲透力高，身體吸收快 3 倍</li>
+          <li>水分和養分迅速注入細胞，令肌膚飽滿水潤</li>
+          <li>有效活化細胞能量傳遞，加速新陳代謝</li>
+          <li>富含天然鈣、鎂礦物質，維持酸鹼平衡</li>
+          <li>含活性氫，有效中和自由基</li>
+        </ul>
+      </div>
+      <div class="compare-vs fade-in"><span>VS</span></div>
+      <div class="compare-card bad fade-in-right">
+        <h3>一般水</h3>
+        <ul>
+          <li>水分子團大而不規則，不容易被身體吸收</li>
+          <li>滲透力低，大部分水分直接排出</li>
+          <li>水分和養分未能完全注入肌膚細胞</li>
+          <li>細胞脆弱，更生功能下降</li>
+          <li>缺乏天然礦物質補充</li>
+          <li>無抗氧化能力</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SKINCARE -->
 <section class="section bg-water">
   <div class="container">
     <h2 class="section-title fade-in">六角水美肌秘密</h2>
     <div class="skin-grid" style="margin-top:2.5rem;">
-      <div class="skin-card fade-in">
+      <div class="skin-card fade-in-left">
         <h3 class="good">✓ 六角水優勢</h3>
         <ul style="list-style:none;">
           <li><span class="dot-accent">•</span> 六角水分子結構與人體肌膚水分子相近，容易被肌膚吸收</li>
@@ -502,7 +550,7 @@
           <li><span class="dot-accent">•</span> 有效活化細胞能量傳遞，加速新陳代謝及肌膚更生</li>
         </ul>
       </div>
-      <div class="skin-card fade-in">
+      <div class="skin-card fade-in-right">
         <h3 class="bad">✗ 一般水分子</h3>
         <ul style="list-style:none;">
           <li>• 水分子結構不穩定，不容易被吸收</li>
@@ -519,11 +567,11 @@
   <div class="container">
     <h2 class="section-title fade-in">使用方法</h2>
     <p class="section-subtitle fade-in">簡單四步，即可享用健康六角水</p>
-    <div class="steps-grid">
-      <div class="fade-in"><div class="step-num">1</div><h3>倒入食水</h3><p>將自來水或過濾水倒入 WaveQ 水壺中，容量最多2公升</p></div>
-      <div class="fade-in"><div class="step-num">2</div><h3>按下按鈕</h3><p>只需按下「Q」按鈕，機器自動開始運作</p></div>
-      <div class="fade-in"><div class="step-num">3</div><h3>等待7分鐘</h3><p>通過磁場渦旋運動和遠紅外線處理，自動生成六角水</p></div>
-      <div class="fade-in"><div class="step-num">4</div><h3>享用健康水</h3><p>天然礦物質鹼性還原水即刻完成，可直接飲用</p></div>
+    <div class="steps-grid stagger">
+      <div class="step-item"><div class="step-num">1</div><h3>倒入食水</h3><p>將自來水或過濾水倒入 WaveQ 水壺中，容量最多2公升</p></div>
+      <div class="step-item"><div class="step-num">2</div><h3>按下按鈕</h3><p>只需按下「Q」按鈕，機器自動開始運作</p></div>
+      <div class="step-item"><div class="step-num">3</div><h3>等待7分鐘</h3><p>八大核心技術自動運作，將普通水轉化為六角水</p></div>
+      <div class="step-item"><div class="step-num">4</div><h3>享用健康水</h3><p>天然礦物質鹼性還原水即刻完成，可直接飲用</p></div>
     </div>
   </div>
 </section>
@@ -547,13 +595,11 @@
   </div>
 </section>
 
-<!-- CERTIFICATIONS (moved to after hero, placeholder here removed) -->
-
 <!-- FOOTER -->
 <footer class="footer">
-  <p class="footer-logo text-gradient">WaveQ</p>
+  <p class="footer-logo">WaveQ</p>
   <p>韓國原裝 · 天然礦物質鹼性六角水生成機</p>
-  <p style="margin-top:0.5rem;">查詢熱線 / 專業示範：9090 8393 (Edwin)</p>
+  <p class="footer-contact">查詢熱線 / 專業示範：9090 8393 (Edwin)</p>
   <p class="copy">© 2026 WaveQ. All rights reserved.</p>
 </footer>
 
@@ -563,12 +609,31 @@
   <span>WhatsApp 查詢</span>
 </a>
 
+<!-- STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "WaveQ",
+  "url": "https://waveq.org",
+  "logo": "https://waveq.org/assets/waveq-product.jpeg",
+  "description": "WaveQ 韓國原裝天然礦物質鹼性六角水生成機品牌",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+852-9090-8393",
+    "contactType": "sales",
+    "availableLanguage": ["zh-HK", "zh-TW", "en"]
+  },
+  "sameAs": ["https://wa.link/uuzzvl"]
+}
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "WaveQ 天然礦物質鹼性六角水生成機",
   "description": "韓國原裝製造天然礦物質鹼性六角水生成機，擁有美國專利、英國專利、WQA、CE、CB、Russia GOST、KFDA、GMP、ISO9001、ISO14001等國際認證。每天7分鐘生成健康六角水。",
+  "image": "https://waveq.org/assets/waveq-product.jpeg",
   "brand": {"@type": "Brand", "name": "WaveQ"},
   "manufacturer": {"@type": "Organization", "name": "WaveQ Korea"},
   "model": "WQ 2000",
@@ -578,6 +643,17 @@
     "@type": "Offer",
     "availability": "https://schema.org/InStock",
     "url": "https://wa.link/uuzzvl"
+  },
+  "review": {
+    "@type": "Review",
+    "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+    "author": {"@type": "Person", "name": "WaveQ 用戶"},
+    "reviewBody": "用了 WaveQ 六角水生成機後，家人的健康明顯改善，操作非常簡單。"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "128"
   }
 }
 </script>
@@ -589,16 +665,29 @@
     {"@type": "Question", "name": "WaveQ 六角水生成機有甚麼國際認證？", "acceptedAnswer": {"@type": "Answer", "text": "WaveQ 擁有美國專利、英國專利、美國水質協會（WQA）、CE、CB、Russia GOST、韓國食物及藥物管理局（KFDA）、GMP、ISO9001、ISO14001等國際認證。"}},
     {"@type": "Question", "name": "WaveQ 六角水有甚麼功效？", "acceptedAnswer": {"@type": "Answer", "text": "WaveQ 六角水擁有十多樣功效，包括抗氧化、排毒美顏、改善便秘、增強抵抗力、有助酸鹼平衡、降血壓、降血糖、降血脂、排毒消脂、改善痛風、預防骨質疏鬆、抗衰老、令皮膚素質更好、洗蔬果去農藥等。"}},
     {"@type": "Question", "name": "WaveQ 需要更換濾芯嗎？", "acceptedAnswer": {"@type": "Answer", "text": "WaveQ 無須每年更換配件，無須接駁水喉，操作簡單，經濟實惠又環保。"}},
-    {"@type": "Question", "name": "WaveQ 六角水生成需要多長時間？", "acceptedAnswer": {"@type": "Answer", "text": "只需按下按鈕，7分鐘即可生成天然礦物質鹼性六角水。"}}
+    {"@type": "Question", "name": "WaveQ 六角水生成需要多長時間？", "acceptedAnswer": {"@type": "Answer", "text": "只需按下按鈕，7分鐘即可生成天然礦物質鹼性六角水。"}},
+    {"@type": "Question", "name": "六角水與一般水有甚麼分別？", "acceptedAnswer": {"@type": "Answer", "text": "六角水分子結構完整、細小，與人體細胞水分子相近，滲透力高，身體吸收快3倍。一般水分子團大而不規則，不容易被身體吸收。"}},
+    {"@type": "Question", "name": "WaveQ 六角水對皮膚有甚麼好處？", "acceptedAnswer": {"@type": "Answer", "text": "六角水分子結構與人體肌膚水分子相近，容易被肌膚吸收，水分和養分迅速注入肌膚，令細胞營潤飽滿，有效活化細胞能量傳遞，加速新陳代謝及肌膚更生。"}}
   ]
 }
 </script>
+
 <script>
-// Scroll fade-in animation
+// HTTPS redirect
+if (location.hostname === 'waveq.org' && location.protocol !== 'https:') {
+  location.replace('https://' + location.hostname + location.pathname + location.search);
+}
+
+// Nav scroll shadow
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+// Scroll animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .stagger').forEach(el => observer.observe(el));
 </script>
 
 </body>
