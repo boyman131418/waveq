@@ -58,7 +58,7 @@ const HeroSection = () => {
               <img
                 src={productImg}
                 alt="WaveQ 六角水生成機"
-                className="relative z-10 max-w-sm lg:max-w-md rounded-3xl shadow-water-lg"
+                className="relative z-10 w-full h-auto max-h-[600px] object-contain rounded-3xl shadow-water-lg"
               />
             </div>
           </motion.div>
