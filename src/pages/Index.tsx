@@ -10,6 +10,7 @@ import SkinCareSection from "@/components/SkinCareSection";
 import HowToUseSection from "@/components/HowToUseSection";
 import SpecsSection from "@/components/SpecsSection";
 import CertificationsSection from "@/components/CertificationsSection";
+import FAQSection from "@/components/FAQSection";
 import DisclaimerSection from "@/components/DisclaimerSection";
 import FooterSection from "@/components/FooterSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -29,6 +30,7 @@ const Index = () => {
       <HowToUseSection />
       <SpecsSection />
       <CertificationsSection />
+      <FAQSection />
       <DisclaimerSection />
       <FooterSection />
       <WhatsAppButton />
