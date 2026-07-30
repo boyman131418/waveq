@@ -5,7 +5,6 @@ const navLinks = [
   { href: "#focus", label: "糖尿・痛風" },
   { href: "#features", label: "產品特點" },
   { href: "#research", label: "實驗數據" },
-  { href: "#cases", label: "個人分享" },
   { href: "#technology", label: "核心技術" },
   { href: "#howto", label: "使用方法" },
   { href: "#specs", label: "產品規格" },
