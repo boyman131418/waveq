@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import FocusSection from "@/components/FocusSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import LivingWaterSection from "@/components/LivingWaterSection";
 import TechnologySection from "@/components/TechnologySection";
@@ -9,6 +10,7 @@ import SkinCareSection from "@/components/SkinCareSection";
 import HowToUseSection from "@/components/HowToUseSection";
 import SpecsSection from "@/components/SpecsSection";
 import CertificationsSection from "@/components/CertificationsSection";
+import DisclaimerSection from "@/components/DisclaimerSection";
 import FooterSection from "@/components/FooterSection";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
@@ -17,15 +19,17 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <HeroSection />
+      <FocusSection />
       <FeaturesSection />
-      <LivingWaterSection />
-      <TechnologySection />
       <HealthDataSection />
       <BenefitsSection />
+      <LivingWaterSection />
+      <TechnologySection />
       <SkinCareSection />
       <HowToUseSection />
       <SpecsSection />
       <CertificationsSection />
+      <DisclaimerSection />
       <FooterSection />
       <WhatsAppButton />
     </div>

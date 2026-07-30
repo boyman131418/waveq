@@ -3,32 +3,32 @@ import { TrendingDown, Activity, ShieldCheck, Beaker } from "lucide-react";
 
 const dataCards = [
   {
-    icon: ShieldCheck,
-    title: "抗癌效果",
-    stat: "減慢擴散速度",
-    desc: "實驗顯示飲用ARW的白鼠癌細胞擴散及生長速度明顯減慢，癌轉移數量由 350 降至 147。",
-    source: "韓國高麗院研究數據",
-  },
-  {
     icon: Activity,
-    title: "糖尿病改善",
-    stat: "血糖值顯著下降",
-    desc: "以OLETF老鼠為對象進行10周試驗，飲用ARW一組的血糖值與對照組相比出現顯著下降，由 203 降至 131 mg/dl。",
-    source: "OLETF大鼠實驗",
-  },
-  {
-    icon: TrendingDown,
-    title: "膽固醇改善",
-    stat: "LDL↓ HDL↑",
-    desc: "膽固醇總濃度不但降低，壞膽固醇(LDL)減少，而好膽固醇(HDL)反而增加。三酸甘油脂由 285 降至 120 mg/dl。",
-    source: "臨床實驗數據",
+    title: "血糖相關數據",
+    stat: "203 → 131 mg/dl",
+    desc: "以 OLETF 老鼠為對象進行 10 週試驗，飲用鹼性還原水 (ARW) 一組的血糖值與對照組相比出現顯著下降。此為動物實驗結果，並非人體療效證明。",
+    source: "OLETF 大鼠實驗",
   },
   {
     icon: Beaker,
-    title: "抗氧化及免疫",
-    stat: "自由基顯著減少",
-    desc: "飲用ARW後肝臟、肺、腎臟等處的活性氧數量顯著減少，脾臟的活性氧數量強而多，證明ARW不僅具有抗氧化作用，更能提高免疫功能。",
-    source: "DAFH-DA檢測實驗",
+    title: "自由基與代謝",
+    stat: "活性氧顯著減少",
+    desc: "飲用 ARW 後肝臟、肺、腎臟等處的活性氧數量顯著減少，顯示鹼性還原水有效對抗自由基，並支援身體代謝功能——這正是痛風人士日常關注的方向。",
+    source: "DAFH-DA 檢測實驗",
+  },
+  {
+    icon: TrendingDown,
+    title: "血脂相關數據",
+    stat: "LDL↓ HDL↑",
+    desc: "實驗中膽固醇總濃度降低，壞膽固醇 (LDL) 減少而好膽固醇 (HDL) 增加，三酸甘油脂由 285 降至 120 mg/dl。糖尿人士普遍同時關注血脂管理。",
+    source: "第三方實驗數據",
+  },
+  {
+    icon: ShieldCheck,
+    title: "吸收與補水效率",
+    stat: "吸收快 3 倍",
+    desc: "六角水分子結構完整、細小，滲透力高、溶解力快，身體吸收快 3 倍，令糖尿及痛風人士更容易達到每日所需飲水量。",
+    source: "產品技術資料",
   },
 ];
 
@@ -42,9 +42,9 @@ const HealthDataSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">科學實證數據</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">糖尿・痛風相關實驗數據</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            天然礦物質鹼性還原水 (ARW) 的實驗數據顯示令人驚異的健康功效
+            以下為天然礦物質鹼性還原水 (ARW) 的第三方公開實驗資料，僅供參考，不代表個人使用效果
           </p>
         </motion.div>
 
@@ -72,6 +72,10 @@ const HealthDataSection = () => {
             </motion.div>
           ))}
         </div>
+
+        <p className="text-xs text-muted-foreground/70 text-center max-w-3xl mx-auto mt-10 leading-relaxed">
+          數據引述自第三方公開研究（部分為動物實驗），並非本產品之臨床療效證明。本產品不能預防、治療或治癒糖尿病、痛風或任何疾病。
+        </p>
       </div>
     </section>
   );
