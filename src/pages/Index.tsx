@@ -5,6 +5,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import LivingWaterSection from "@/components/LivingWaterSection";
 import TechnologySection from "@/components/TechnologySection";
 import HealthDataSection from "@/components/HealthDataSection";
+import CaseStudySection from "@/components/CaseStudySection";
 import BenefitsSection from "@/components/BenefitsSection";
 import SkinCareSection from "@/components/SkinCareSection";
 import HowToUseSection from "@/components/HowToUseSection";
@@ -22,6 +23,7 @@ const Index = () => {
       <FocusSection />
       <FeaturesSection />
       <HealthDataSection />
+      <CaseStudySection />
       <BenefitsSection />
       <LivingWaterSection />
       <TechnologySection />
