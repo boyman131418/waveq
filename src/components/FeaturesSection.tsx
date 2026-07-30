@@ -4,12 +4,12 @@ import { Droplets, Shield, Zap, Heart, Leaf, Award, Timer, Wrench } from "lucide
 const features = [
   { icon: Droplets, title: "天然礦物質", desc: "含豐富天然鈣、鎂等礦物質，為身體補充必需元素" },
   { icon: Shield, title: "活性氫抗自由基", desc: "活性氫有效對抗自由基，延緩衰老，增強免疫力" },
-  { icon: Zap, title: "操作簡單", desc: "毋須接駁水喉，只需按下按鈕，7分鐘即可生成健康好水" },
-  { icon: Heart, title: "改善體質", desc: "有助排毒美顏、改善便秘、平衡體內酸鹼度" },
-  { icon: Leaf, title: "毋須更換配件", desc: "無需每年更換濾芯等配件，經濟實惠又環保" },
+  { icon: Zap, title: "操作簡單", desc: "無須接駁水喉，只需按下按鈕，7分鐘即可生成六角水" },
+  { icon: Heart, title: "日常保健習慣", desc: "有助酸鹼平衡、排毒消脂，適合關注糖尿及痛風人士每日飲用" },
+  { icon: Leaf, title: "無須更換配件", desc: "無需每年更換濾芯等配件，長期飲用經濟實惠又環保" },
   { icon: Award, title: "多國認證", desc: "擁有美國專利及CE、CB、KFDA、GMP等國際認證" },
   { icon: Timer, title: "耐用性高", desc: "採用優質ABS/PET材料，韓國原裝製造，品質保證" },
-  { icon: Wrench, title: "十三個功效", desc: "抗氧化、排毒、降三高、減肥、改善痛風等多達十三個功效" },
+  { icon: Wrench, title: "吸收快 3 倍", desc: "六角水分子結構完整、細小，滲透力高，身體吸收快 3 倍" },
 ];
 
 const container = {
@@ -32,9 +32,9 @@ const FeaturesSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-foreground mb-4">產品特點</h2>
+          <h2 className="text-4xl font-bold text-foreground mb-4">為何適合糖尿・痛風人士每日飲用</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            WaveQ 結合韓國水權威金吉昊博士研發的 Actimo 技術與 mineQ 天然礦物質濾芯
+            WaveQ 結合韓國水權威金吉昊博士研發的 Actimo 技術與 mineQ 天然礦物質濾芯，讓每天飲水更輕鬆、更足夠
           </p>
         </motion.div>
 

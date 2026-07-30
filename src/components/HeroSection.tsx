@@ -17,24 +17,28 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <p className="text-primary font-medium tracking-widest uppercase mb-4 text-sm">韓國原裝製造</p>
+            <p className="text-primary font-medium tracking-widest uppercase mb-4 text-sm">韓國原裝製造 · 專為關注糖尿及痛風人士</p>
             <h1 className="text-5xl lg:text-6xl font-black leading-tight mb-6">
-              <span className="text-gradient-water">WaveQ</span>
+              <span className="text-foreground">關注糖尿・痛風</span>
               <br />
-              <span className="text-foreground">天然礦物質鹼性</span>
+              <span className="text-foreground">由每日飲水開始</span>
               <br />
-              <span className="text-foreground">六角水生成機</span>
+              <span className="text-gradient-water">WaveQ 六角水生成機</span>
             </h1>
             <p className="text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
-              每天只花7分鐘，為您和家人生成富含天然礦物質的鹼性六角水。
-              操作簡單，毋須接駁水喉，毋須每年更換配件。
+              糖尿及痛風人士，日常最需要的就是「飲得夠、飲得啱」。
+              WaveQ 每天7分鐘，生成分子結構完整、細小的天然礦物質鹼性六角水，
+              有助酸鹼平衡、促進新陳代謝，讓每一杯水都成為日常健康管理的一部分。
+            </p>
+            <p className="text-xs text-muted-foreground/70 mb-6 max-w-lg leading-relaxed">
+              WaveQ 為家用飲水設備，並非醫療器械，不能診斷、治療或治癒任何疾病，亦不可取代醫生處方及藥物。
             </p>
             <div className="flex flex-wrap gap-4">
               <a
-                href="#features"
+                href="#focus"
                 className="inline-flex items-center px-8 py-3 rounded-full bg-gradient-water-deep text-primary-foreground font-semibold shadow-water hover:shadow-water-lg transition-all duration-300 hover:scale-105"
               >
-                了解更多
+                了解糖尿・痛風飲水方案
               </a>
               <a
                 href="https://wa.link/uuzzvl"
