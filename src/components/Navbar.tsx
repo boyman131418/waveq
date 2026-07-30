@@ -8,6 +8,7 @@ const navLinks = [
   { href: "#technology", label: "核心技術" },
   { href: "#howto", label: "使用方法" },
   { href: "#specs", label: "產品規格" },
+  { href: "#faq", label: "常見問題" },
 ];
 
 const Navbar = () => {
